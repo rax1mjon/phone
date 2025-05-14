@@ -222,6 +222,11 @@
   backdrop-filter: blur(4px);
   box-shadow: 0 0 50px 5px #f6f6f687;
   display: none;
+
+  &.show-alarm {
+    display: block;
+  }
+
   animation: alarmBody 0.2s ease infinite alternate;
 
   @keyframes alarmBody {

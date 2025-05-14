@@ -3,6 +3,8 @@ let dateNow = document?.querySelector(".alarm-body_now h3");
 let closeBtn = document?.querySelector(".close");
 let allBtn = document.querySelectorAll("button");
 let inputTime = document?.querySelector('[type="time"]');
+let alarmValue;
+let alarmMusic = document?.querySelector("audio");
 
 allBtn.forEach((element) => {
   element.addEventListener("click", (e) => {
@@ -26,6 +28,12 @@ getTime();
 
 setInterval(() => {
   getSecountTime();
+
+  if (alarmValue == NowDate && alarmMusic) {
+    alarmMusic.play();
+    document.querySelector(".alarm-control").classList.add("show-alarm");
+    alarmValue = "";
+  }
 }, 1000);
 
 setInterval(() => {

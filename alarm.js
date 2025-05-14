@@ -1,11 +1,23 @@
 let SetAlarm = document.querySelector(".SetAlarm");
 let setAlarmForm = document.querySelector(".setAlarmForm");
+let playList = document.querySelectorAll(".play");
+let stopAudio = document.querySelector(".stop");
+let x = document.querySelector(".X");
 
-setAlarmForm.addEventListener("submit", function (e) {
+SetAlarm.addEventListener("click", function (e) {
+  alarmValue = inputTime.value;
+});
 
-  console.log(e.target);
+playList.forEach((el) => {
+  el.addEventListener("click", () => {
+    alarmMusic.play();
+  });
+});
 
-  // if (NowDate == alarmValue) {
-  //   console.log(alarmValue, NowDate);
-  // }
+stopAudio.addEventListener("click", () => {
+  alarmMusic.pause();
+});
+
+x.addEventListener("click", () => {
+  document.querySelector(".alarm-control").classList.remove("show-alarm");
 });
