@@ -5,7 +5,7 @@ let stopAudio = document.querySelector(".stop");
 let x = document.querySelector(".X");
 
 SetAlarm.addEventListener("click", function (e) {
-  alarmValue = inputTime.value;
+  alarmValue = inputTime.value;  
 });
 
 playList.forEach((el) => {
@@ -16,6 +16,11 @@ playList.forEach((el) => {
 
 stopAudio.addEventListener("click", () => {
   alarmMusic.pause();
+  document.querySelector(".alarm-control").style = `
+   animation: alarmstop 0.5s ease infinite alternate;`;
+
+document.querySelector(".alarm-controlBody").style = `
+   animation: alarmstop 0.5s ease infinite alternate;`;
 });
 
 x.addEventListener("click", () => {

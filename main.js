@@ -12,10 +12,12 @@ allBtn.forEach((element) => {
   });
 });
 
-let NowDate = new Date().toLocaleTimeString().slice(0, 5);
+let NowDate;
 function getTime() {
+  NowDate = new Date().toLocaleTimeString().slice(0, 5);
   dateSpan.innerHTML = NowDate;
 }
+getTime();
 
 if (inputTime) inputTime.value = NowDate;
 
@@ -24,7 +26,6 @@ function getSecountTime() {
 }
 
 getSecountTime();
-getTime();
 
 setInterval(() => {
   getSecountTime();
@@ -85,4 +86,72 @@ function getAlarmItem(el) {
 
 closeBtn?.addEventListener("click", () => {
   history.go(-1);
+});
+
+// *********** batary *************
+let batteryText = document.querySelector(".batary span");
+
+navigator.getBattery().then((bObj) => {
+  let batteryLevel = bObj.level * 100;
+  batteryText.innerHTML = batteryLevel + "%";
+});
+
+setInterval(() => {
+  let batteryBackground = document.querySelector(`.rect-bg`);
+
+  navigator.getBattery().then((bObj) => {
+    let batteryLevel = bObj.level * 100;
+
+    batteryBackground.style = `width: ${batteryLevel - 25}%; fill: white;`;
+
+    batteryLevel = bObj.level * 100;
+    let navigatorOnLine = navigator.onLine;
+
+    if (navigatorOnLine) {
+      if (batteryLevel > 20) {
+        batteryText.style = `
+      color:rgba(37, 31, 31, 0.79);
+      `;
+        batteryBackground.style = `
+      width: ${batteryLevel - 25}%;
+      fill: rgb(0, 255, 26);
+      `;
+      } else {
+        batteryText.style = `
+          color:rgba(255, 0, 0, 0.71);
+         `;
+      }
+    } else {
+      if (batteryLevel <= 20) {
+        batteryText.style = `
+      color:rgba(255, 255, 255, 0.79);
+      `;
+        batteryBackground.style = `
+      width: ${batteryLevel - 25}%;
+      fill: rgb(255, 0, 0);
+      `;
+      } else {
+        batteryText.style = `
+          color:rgba(0, 0, 0, 0.71);
+         `;
+        batteryBackground.style = `
+      width: ${batteryLevel - 25}%;
+      fill: rgb(255, 255, 255);
+      `;
+      }
+    }
+    batteryText.innerHTML = batteryLevel + "%";
+  });
+}, 1000);
+
+// navigator.onLine;   // zaryad olayotganda true
+
+// navigator.userAgent  // main.js:103 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36
+
+// ********** location to camera ***************
+
+let cameraIcon = document.querySelector(`[src="./images/App Icon-13.svg"]`);
+
+cameraIcon?.addEventListener("click", () => {
+  location.href = "camera.html";
 });
