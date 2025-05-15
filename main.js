@@ -105,9 +105,8 @@ setInterval(() => {
     batteryBackground.style = `width: ${batteryLevel - 25}%; fill: white;`;
 
     batteryLevel = bObj.level * 100;
-    let navigatorOnLine = navigator.onLine;
 
-    if (!navigatorOnLine) {
+    if (navigator.onLine) {
       if (batteryLevel > 20) {
         batteryText.style = `
       color:rgba(37, 31, 31, 0.79);
@@ -144,10 +143,6 @@ setInterval(() => {
   });
 }, 1000);
 
-// navigator.onLine;   // zaryad olayotganda true
-
-// navigator.userAgent  // main.js:103 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36
-
 // ********** location to camera ***************
 
 let cameraIcon = document.querySelector(`[src="./images/App Icon-13.svg"]`);
@@ -155,3 +150,4 @@ let cameraIcon = document.querySelector(`[src="./images/App Icon-13.svg"]`);
 cameraIcon?.addEventListener("click", () => {
   location.href = "camera.html";
 });
+
