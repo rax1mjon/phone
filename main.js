@@ -107,7 +107,7 @@ setInterval(() => {
     batteryLevel = bObj.level * 100;
     let navigatorOnLine = navigator.onLine;
 
-    if (navigatorOnLine) {
+    if (!navigatorOnLine) {
       if (batteryLevel > 20) {
         batteryText.style = `
       color:rgba(37, 31, 31, 0.79);
