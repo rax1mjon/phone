@@ -106,7 +106,7 @@ setInterval(() => {
 
     batteryLevel = bObj.level * 100;
 
-    if (navigator.onLine) {
+    if (!navigator.onLine) {
       if (batteryLevel > 20) {
         batteryText.style = `
       color:rgba(37, 31, 31, 0.79);
@@ -151,3 +151,12 @@ cameraIcon?.addEventListener("click", () => {
   location.href = "camera.html";
 });
 
+
+// ********** location to calculator ***************
+
+let calculatorIcon = document.querySelector(`[src="./images/App Icon-11.svg"]`);
+
+
+ calculatorIcon?.addEventListener("click",()=>{
+  location.href = "calculator.html";
+ })

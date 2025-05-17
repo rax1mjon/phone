@@ -1,0 +1,76 @@
+.iphone-body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.close {
+  align-self: start;
+  width: 35px;
+  height: 35px;
+  img {
+    width: 100%;
+  }
+}
+
+.calculator {
+  background-color: black;
+  width: 320px;
+  border-radius: 30px;
+  padding: 20px;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+}
+
+.display {
+  color: white;
+  font-size: 48px;
+  text-align: right;
+  padding: 20px 10px;
+  height: 160px;
+  overflow-x: auto;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.btn {
+  height: 60px;
+  border: none;
+  border-radius: 50%;
+  font-size: 24px;
+  color: white;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.btn:active {
+  transform: scale(0.95);
+}
+
+.light-gray {
+  background-color: #d4d4d2;
+  color: black;
+}
+
+.dark-gray {
+  background-color: #505050;
+}
+
+.orange {
+  background-color: #ff9500;
+}
+
+.zero {
+  grid-column: span 2;
+  border-radius: 30px;
+  text-align: left;
+  padding-left: 25px;
+}
